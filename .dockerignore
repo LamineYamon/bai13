@@ -1,0 +1,30 @@
+# Bỏ qua các file không cần thiết khi build Docker image
+.git
+.gitignore
+README.md
+*.md
+.vscode
+.idea
+nbproject/private
+build/
+dist/
+*.war
+
+# Log files
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*~
+*.bak
+*.swp
+*.tmp
