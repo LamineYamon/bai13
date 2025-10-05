@@ -5,29 +5,11 @@ FROM tomcat:9.0-jdk17
 LABEL maintainer="student@example.com"
 LABEL description="Email List Application with JPA - Exercise 13-1"
 
-# Cài đặt các package cần thiết
-RUN apt-get update && apt-get install -y \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
-
-# Tạo thư mục tạm để download H2
-RUN mkdir -p /tmp/libs
-
-# Download H2 database JAR (in-memory database cho cloud)
-RUN wget -O /tmp/libs/h2-2.2.224.jar \
-    "https://repo1.maven.org/maven2/com/h2database/h2/2.2.224/h2-2.2.224.jar"
-
 # Xóa ứng dụng mặc định của Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy toàn bộ web application
-COPY web/ /usr/local/tomcat/webapps/ROOT/
-
-# Copy compiled classes
-COPY build/WEB-INF/ /usr/local/tomcat/webapps/ROOT/WEB-INF/
-
-# Copy H2 JAR vào thư viện
-RUN cp /tmp/libs/h2-2.2.224.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+# Copy WAR file đã build sẵn (build trước khi tạo Docker image)
+COPY dist/ch13_ex1_email.war /usr/local/tomcat/webapps/ROOT.war
 
 # Set quyền cho các file
 RUN chmod -R 755 /usr/local/tomcat/webapps/ROOT/
