@@ -13,6 +13,11 @@
     <property name="dist.dir" value="dist"/>
     <property name="war.name" value="ch13_ex1_email.war"/>
     <property name="deploy.dir" value="D:/Code/Năm 3/ltw/apache-tomcat-9.0.108/webapps"/>
+    
+    <!-- Load build.properties nếu có (cho Docker build) -->
+    <property file="build.properties"/>
+    
+    <!-- Default servlet.lib path cho local development -->
     <property name="servlet.lib" value="D:/Code/Năm 3/ltw/apache-tomcat-9.0.108/lib/servlet-api.jar"/>
     
     <!-- Classpath -->
