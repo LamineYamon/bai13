@@ -48,9 +48,6 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 # Copy WAR file từ builder stage
 COPY --from=builder /app/dist/ch13_ex1_email.war /usr/local/tomcat/webapps/ROOT.war
 
-# Set quyền cho các file
-RUN chmod -R 755 /usr/local/tomcat/webapps/ROOT/
-
 # Cổng Tomcat mặc định (Render sẽ map tự động)
 EXPOSE 8080
 
